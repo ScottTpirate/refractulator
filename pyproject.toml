@@ -17,7 +17,7 @@ dependencies = [
   "numpy",
 ]
 optional-dependencies = {
-  visualization = ["plotly"],
+  visualization = ["plotly"]
 }
 urls = {
   "Homepage" = "https://github.com/ScottTpirate/refractulator",
