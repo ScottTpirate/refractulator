@@ -1,6 +1,8 @@
 # refractulator/calculate.py
 
 import numpy as np
+from .visualization import visualize
+
 
 class Refractulator:
     def __init__(self, radius=1.0):
@@ -158,3 +160,34 @@ class Refractulator:
                     rays.append(ray)
         return rays
     
+    
+    def compute_incident_direction(self, theta_deg, phi_deg):
+        """
+        Compute the incident direction vector D from azimuth and elevation angles.
+        """
+        theta_rad = np.radians(theta_deg)
+        phi_rad = np.radians(phi_deg)
+        D = np.array([
+            np.cos(phi_rad) * np.cos(theta_rad),
+            np.cos(phi_rad) * np.sin(theta_rad),
+            np.sin(phi_rad)
+        ])
+        D /= np.linalg.norm(D)
+        return D
+
+    def compute_sun_position(self, D, distance=10):
+        """
+        Compute the position of the sun based on the incident direction and distance.
+        """
+        return self.center - D * distance
+    
+    
+    def visualize(self, rays, mode='3d'):
+        """
+        Visualize rays using Plotly.
+
+        Parameters:
+        - rays: List of rays to visualize.
+        - mode: '2d' or '3d' visualization.
+        """
+        visualize(rays, mode=mode, sphere_radius=self.radius, sphere_center=self.center)

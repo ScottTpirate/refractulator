@@ -2,3 +2,6 @@
 
 include README.md
 include LICENSE
+exclude examples/*
+exclude tests/*
+exclude docs/*
