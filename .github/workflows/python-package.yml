@@ -4,7 +4,7 @@ name: Python Package
 
 on:
   push:
-    # Trigger the workflow only on pushes to the main branch and on tag pushes
+    # Trigger the workflow on pushes to the main branch and on tag pushes
     branches: [ main ]
     tags:
       - 'v*.*.*'  # Matches tags like v0.2.0, v0.2.0-beta.1, etc.
@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.12.1]
+        python-version: [3.12.1]  # Include all desired Python versions
 
     steps:
       # Step 1: Check out the repository
@@ -35,9 +35,9 @@ jobs:
       - name: Upgrade pip and install build tools
         run: |
           python -m pip install --upgrade pip
-          pip install setuptools wheel
+          pip install build
 
-      # Step 4: Install project dependencies
+      # Step 4: Install project dependencies (if any)
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -48,14 +48,25 @@ jobs:
         run: |
           pytest
 
-      # Step 6: Build the package
+      # Step 6: Build the package using `python -m build`
       - name: Build package
         run: |
-          python setup.py sdist bdist_wheel
+          python -m build
 
       # Step 7: Publish to PyPI (only on tag pushes)
       - name: Publish to PyPI
         if: startsWith(github.ref, 'refs/tags/v') && github.event_name == 'push'
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
         run: |
           pip install --upgrade twine
-          twine upload dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }}
+          twine upload dist/*
+
+      # Optional: Clean up build artifacts (optional but recommended)
+      - name: Clean up build artifacts
+        if: always()
+        run: |
+          rm -rf dist/
+          rm -rf *.egg-info/
+          rm -rf build/
