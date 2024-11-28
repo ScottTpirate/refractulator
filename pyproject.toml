@@ -18,10 +18,9 @@ dependencies = ["numpy"]
 [project.optional-dependencies]
 visualization = ["plotly"]
 
-urls = {
-  "Homepage" = "https://github.com/ScottTpirate/refractulator",
-  "Documentation" = "https://github.com/ScottTpirate/refractulator#readme"
-}
+[project.urls]
+Homepage = "https://github.com/ScottTpirate/refractulator"
+Documentation = "https://github.com/ScottTpirate/refractulator#readme"
 
 [tool.setuptools.packages.find]
 exclude = ["tests", "examples", "docs"]
