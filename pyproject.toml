@@ -13,9 +13,7 @@ authors = [
   { name = "Scott Kilgore", email = "kilgore.scott+github@gmail.com" }
 ]
 license = { text = "MIT" }
-dependencies = [
-  "numpy",
-]
+dependencies = ["numpy"]
 optional-dependencies = {
   visualization = ["plotly"]
 }
