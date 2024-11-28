@@ -14,9 +14,10 @@ authors = [
 ]
 license = { text = "MIT" }
 dependencies = ["numpy"]
-optional-dependencies = {
-  visualization = ["plotly"]
-}
+
+[project.optional-dependencies]
+visualization = ["plotly"]
+
 urls = {
   "Homepage" = "https://github.com/ScottTpirate/refractulator",
   "Documentation" = "https://github.com/ScottTpirate/refractulator#readme"
