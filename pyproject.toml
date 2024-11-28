@@ -1,7 +1,7 @@
 # pyproject.toml
 
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel", "setuptools_scm[toml]>=6.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -19,12 +19,11 @@ optional-dependencies = {
 }
 urls = {
   "Homepage" = "https://github.com/ScottTpirate/refractulator",
-  "Documentation" = "https://github.com/ScottTpirate/refractulator#readme",
+  "Documentation" = "https://github.com/ScottTpirate/refractulator#readme"
 }
 
 [tool.setuptools.packages.find]
 exclude = ["tests", "examples", "docs"]
-
 
 [tool.setuptools_scm]
 write_to = "refractulator/_version.py"
