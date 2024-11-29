@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="fun_rainbow_graphic.png" width="200" height="200">
+    <img src="rainbow_computer.png" width="200" height="200">
 </p>
 
 <h1 align="center">Refractulator</h1>
