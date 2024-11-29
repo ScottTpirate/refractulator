@@ -3,10 +3,9 @@
 </p>
 
 <h1 align="center">Refractulator</h1>
-<h3 align="center">Somewhere Within the Rainbow</h3>
+<h3 align="center">More than a simple refraction calculator, refractulator is a Python package that calculates and visualizes how light interacts with water droplets (or any medium given the appropriate refraction data). 
+</h3>
 
-
-Refractulator is a Python package that calculates and visualizes how light interacts with water droplets (or any medium given the appropriate refraction data).
 
 ## Installation
 
