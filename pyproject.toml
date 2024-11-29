@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "refractulator"
-version = "v0.2.0-beta.2"  # Update this as per your release cycle
+version = "v0.3.0"  # Update this as per your release cycle
 description = "A package to calculate and visualize light interactions with water droplets."
 readme = "README.md"
 authors = [

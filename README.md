@@ -27,23 +27,23 @@ pip install refractulator[visualization]
 
 ## Usage
 ```python
+# example_usage.py
+
 from refractulator import Refractulator
-import numpy as np
 
-# Initialize Refractulator
-refr = Refractulator(radius=1.0)
+# Create an instance of Refractulator
+refractulator = Refractulator(radius=1.0)
 
-# Define incoming direction
-D = np.array([1.0, 0.0, 0.0])
+# Use the high-level method to calculate and visualize rays
+refractulator.calculate_and_visualize_rays(
+    num_rays=100,            # Number of rays
+    cylinder_radius=0.5,     # Radius of the cylindrical beam
+    theta_deg=120,           # Azimuth angle
+    phi_deg=-30,             # Elevation angle
+    mode='3d'                # Visualization mode
+)
 
-# Generate ray origins (example)
-ray_origins = np.random.uniform(-0.5, 0.5, size=(100, 3))
 
-# Calculate rays
-rays = refr.calculate_rays_cylinder(ray_origins, D)
-
-# Print the number of rays calculated
-print(f"Number of rays calculated: {len(rays)}")
 ```
 
 ## Features
@@ -52,10 +52,11 @@ print(f"Number of rays calculated: {len(rays)}")
 - (Optional) Visualization tools for ray paths.
 
 ## Acknowledgements
-This project was inspired by Dr. Brian Pasko, my calculus professor at ENMU. 
+This project was inspired by Dr. Brian Pasko, my math professor at ENMU. 
 
 As well as this article decribing the whole process in detail:
 Janke, S. (1999). Somewhere Within the Rainbow (UMAP). Consortium for Mathematics and its Applications (COMAP). https://www.comap.com/membership/member-resources/item/somewhere-within-the-rainbow-umap
+
 Other resources I appreciate:
 - https://javalab.org/en/rainbow_by_raindrops_en/
 - https://ux1.eiu.edu/~cfadd/3050/Adventures/chapter_17/ch17_3.htm

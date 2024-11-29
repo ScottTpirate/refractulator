@@ -145,6 +145,32 @@ class Refractulator:
         orthogonal_vector2 /= np.linalg.norm(orthogonal_vector2)
         return orthogonal_vector1, orthogonal_vector2
     
+    
+    def generate_cylinder_ray_origins(self, num_rays=100, cylinder_radius=0.5, D=None, distance=5.0):
+        """
+        Generate ray origins forming a cylindrical beam of parallel rays.
+
+        Parameters:
+        - num_rays: Number of rays to generate.
+        - cylinder_radius: Radius of the cylindrical beam.
+        - D: Direction vector of the incident rays.
+        - distance: Distance from the sphere center to start the rays.
+        """
+        if D is None:
+            D = np.array([0, 0, -1])  # Default direction
+
+        # Get two vectors perpendicular to D
+        V1, V2 = self.get_perpendicular_vectors(D)
+
+        theta_values_ray = np.linspace(0, 2 * np.pi, num_rays, endpoint=False)
+        ray_origins = []
+        for theta in theta_values_ray:
+            offset = cylinder_radius * np.cos(theta) * V1 + cylinder_radius * np.sin(theta) * V2
+            P0 = self.center - D * distance  # Start rays before the sphere
+            origin = P0 + offset
+            ray_origins.append(origin)
+        return ray_origins
+    
 
     def calculate_rays_cylinder(self, ray_origins, D):
         """
@@ -191,3 +217,26 @@ class Refractulator:
         - mode: '2d' or '3d' visualization.
         """
         visualize(rays, mode=mode, sphere_radius=self.radius, sphere_center=self.center)
+        
+    def calculate_and_visualize_rays(self, num_rays=100, cylinder_radius=0.5, theta_deg=120, phi_deg=-30, mode='3d'):
+        """
+        High-level method to calculate and visualize rays interacting with the sphere.
+
+        Parameters:
+        - num_rays: Number of rays to generate.
+        - cylinder_radius: Radius of the cylindrical beam.
+        - theta_deg: Azimuth angle of the incident direction.
+        - phi_deg: Elevation angle of the incident direction.
+        - mode: Visualization mode ('2d' or '3d').
+        """
+        # Compute incident direction
+        D = self.compute_incident_direction(theta_deg, phi_deg)
+
+        # Generate ray origins
+        ray_origins = self.generate_cylinder_ray_origins(num_rays, cylinder_radius, D)
+
+        # Calculate rays
+        rays = self.calculate_rays_cylinder(ray_origins, D)
+
+        # Visualize the rays
+        self.visualize(rays, mode=mode)
