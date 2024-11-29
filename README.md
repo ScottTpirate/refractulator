@@ -1,4 +1,10 @@
-# Refractulator
+<p align="center">
+    <img src="fun_rainbow_graphic.png" width="200" height="200">
+</p>
+
+<h1 align="center">Refractulator</h1>
+<h3 align="center">Somewhere Within the Rainbow</h3>
+
 
 Refractulator is a Python package that calculates and visualizes how light interacts with water droplets (or any medium given the appropriate refraction data).
 
@@ -45,6 +51,17 @@ print(f"Number of rays calculated: {len(rays)}")
 - Calculate refracted and reflected rays interacting with a spherical medium.
 - Support for multiple colors with different refractive indices.
 - (Optional) Visualization tools for ray paths.
+
+## Acknowledgements
+This project was inspired by Dr. Brian Pasko, my calculus professor at ENMU. 
+
+As well as this article decribing the whole process in detail:
+Janke, S. (1999). Somewhere Within the Rainbow (UMAP). Consortium for Mathematics and its Applications (COMAP). https://www.comap.com/membership/member-resources/item/somewhere-within-the-rainbow-umap
+Other resources I appreciate:
+- https://javalab.org/en/rainbow_by_raindrops_en/
+- https://ux1.eiu.edu/~cfadd/3050/Adventures/chapter_17/ch17_3.htm
+- http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/rbowpath.html
+- http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/rbowpath.html#c2
 
 
 ## Contributing
