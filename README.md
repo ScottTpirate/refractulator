@@ -20,7 +20,7 @@ pip install refractulator[visualization]
 ```
 
 
-## What's New in Version 0.2.0
+## What's New in Version 0.3.0
 - Visualization Module: Added support for 2D and 3D visualizations using Plotly.
 - Data Generator Class: Simplified data generation with the new RefractulatorDataGenerator class.
 - Examples: See the examples/ directory for usage examples.
